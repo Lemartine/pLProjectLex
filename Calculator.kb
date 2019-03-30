@@ -1,0 +1,45 @@
+Int main(){
+	Scanner num = Scanner(in):
+	int num1:
+	int num2:
+	print('Enter First Number='):
+	println():
+	num1 = num.nextInt():
+	print('Enter Second Number='):
+	num2 = num.nextInt():
+	println():
+	
+	int calc:
+	int result:
+	
+	print('For addition press 1, For substraction press 2, For multiplication press 3, For divison press 4.'):
+	println():
+	calc = num.nextInt():
+	
+	switch (calc) {
+        case 1 
+            result=num1+num2:
+			print('You choose addition, result = ' + result):
+            break:
+
+        case 2 
+            result=num1-num2:
+			print('You choose substraction, result = ' + result):
+            break:
+
+        case 3 
+            result=num1*num2:
+			print('You choose multiplication, result = ' + result):
+            break:
+		
+		case 4             
+			result=num1/num2:
+			print('You choose divison, result = ' + result):
+            break:
+			
+        default 
+            println('Wrong Choise!Please enter 1, 2, 3, 4'):
+            break:
+    }
+}
+

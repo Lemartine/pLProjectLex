@@ -1,0 +1,31 @@
+import Math
+
+Int main(){
+	int fn = 20:
+	int sn = 4:
+	int tn = -5:
+	int add = fn + sn:
+	int subs = fn - sn:
+	int mult = fn * sn:
+	int div = fn / sn:
+	int mod = fn % sn:
+	int abs = Math.abs(tn):
+	int min = Math.min(fn, sn):
+	int max = Math.max(fn, sn):
+	int pow = Math.pow(sn, 2):
+	int sqrt = Math.sqrt(sn):
+	double random  = Math.random():
+ 
+	println('Addition result= ' + add):
+	println('Substraction result= ' + subs):
+	println('Multiplication result= ' + mult):
+	println('Division result= ' + div):
+	println('Mod Operation = ' + mod ):
+	println('Absolute result = ' + abs ):
+	println('Minimum result = ' + min ):
+	println('Maximum result = ' + max ):
+	println('Power result = ' + pow ):
+	println('Squared result = ' + sqrt ):
+	println('Random result = ' + random ):
+}
+
