@@ -91,19 +91,13 @@
   
 <boolean literal> ::= true | false
 
-<character literal> ::= ' <single character> ' | ' <escape sequence> '
-
 <single character> ::= <input character> except ' and \
 
-<string literal> ::= " <string characters>?"
-
-<string characters> ::= <string character> | <string characters> <string character>
-
-<string character> ::= <input character> except " and \ | <escape character>
+<string literal> ::= ' <string characters>?'
 
 <null literal> ::= null
 
-<keyword> ::= abstract | boolean | break | byte | case | catch | char | class | const | continue | default | do | double | else | extends | final | finally | float | for | goto | if | implements | import | instanceof | int | interface | long | native | new | package | private | protected | public | return | short | static | super | switch | synchronized | this | throw | throws | transient | try | void | volatile | while
+<keyword> ::= boolean | break | case | catch | char | const | continue | default | double | else | float | if | import | int | return | switch | throw | try | while
 
 <br><b>Explains the syntax of your language:</b>
 
