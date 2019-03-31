@@ -3,7 +3,7 @@
 
 <b>Name of your programming language:</b> Chameleon
 
-<b>Grammar in BNF form:</b>
+<b>Grammar in BNF form:</b><br>
 <translation-unit> ::= {<external-declaration>}*
 
 <external-declaration> ::= <function-definition>
@@ -233,6 +233,6 @@
                    | continue ;
                    | break ;
                    | return {<expression>}? ;
-<b>Explains the syntax of your language:</b>
+<br><b>Explains the syntax of your language:</b>
 
-<b>Explains any design decisions you make:</b>
+<br><b>Explains any design decisions you make:</b>
