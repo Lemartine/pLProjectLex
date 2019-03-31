@@ -220,13 +220,11 @@
                         | switch ( <expression> ) <statement>
 
 <iteration-statement> ::= while ( <expression> ) <statement>
-                        | do <statement> while ( <expression> ) ;
-                        | for ( {<expression>}? ; {<expression>}? ; {<expression>}? ) <statement>
 
-<jump-statement> ::= goto <identifier> ;
-                   | continue ;
+<jump-statement> ::= continue ;
                    | break ;
                    | return {<expression>}? ;
+  
 <br><b>Explains the syntax of your language:</b>
 
 <br><b>Explains any design decisions you make:</b>
