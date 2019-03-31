@@ -5,16 +5,9 @@
 
 <b>Grammar in BNF form:</b><br>
 
-<import declarations> ::= <import declaration> | <import declarations> <import declaration>
-
-<import declaration> ::= <single type import declaration> | <type import on demand declaration>
-
 <single type import declaration> ::= import <type name> ;
 
-<type import on demand declaration> ::= import <package name> . * ;
-
-<type declarations> ::= <type declaration> | <type declarations> <type declaration>
-
+<interface type list> ::= <interface type> | <interface type list> , <interface type>
 
 
 
