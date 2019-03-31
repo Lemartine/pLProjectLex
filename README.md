@@ -47,7 +47,11 @@
 
 <catch clause> ::= catch ( <formal parameter> ) <block>
 
-<assignment operator> ::= = | *= | /= | %= | += | -=
+<equality-expression> ::= <relational-expression>
+                        | <equality-expression> == <relational-expression>
+                        | <equality-expression> != <relational-expression>
+  
+<assignment operator> :: *= | /= | %= | += | -=
 
 <conditional or expression> ::= <conditional and expression> | <conditional or expression> | <conditional and expression>
 
@@ -57,76 +61,27 @@
   
 <additive expression> ::= <multiplicative expression> | <additive expression> + <multiplicative expression> | <additive expression> - <multiplicative expression>
   
-<cast expression> ::= ( <primitive type> ) <unary expression> | ( <reference type> ) <unary expression not plus minus>
-
-<unary expression> ::= <preincrement expression> | <predecrement expression> | + <unary expression> | - <unary expression> | <unary expression not plus minus>
+<cast expression> ::= ( <primitive type> ) <unary expression> 
 
 <predecrement expression> ::= -- <unary expression>
 
 <preincrement expression> ::= ++ <unary expression>
-  
-
-
-<struct-or-union-specifier> ::= <struct-or-union> <identifier> { {<struct-declaration>}+ }
-                              | <struct-or-union> { {<struct-declaration>}+ }
-                              | <struct-or-union> <identifier>
-
-<struct-declaration> ::= {<specifier-qualifier>}* <struct-declarator-list>
-
-<specifier-qualifier> ::= <type-specifier>
-                        | <type-qualifier>
-
-<struct-declarator-list> ::= <struct-declarator>
-                           | <struct-declarator-list> , <struct-declarator>
-
-<struct-declarator> ::= <declarator>
-                      | <declarator> : <constant-expression>
-                      | : <constant-expression>
-
-<declarator> ::= {<pointer>}? <direct-declarator>
-
-<pointer> ::= * {<type-qualifier>}* {<pointer>}?
 
 <type-qualifier> ::= const
 
 <direct-declarator> ::= <identifier>
                       | ( <declarator> )
-                      | <direct-declarator> [ {<constant-expression>}? ]
+                      | <direct-declarator> [ {<constant-expression>} ]
                       | <direct-declarator> ( <parameter-type-list> )
-                      | <direct-declarator> ( {<identifier>}* )
+                      | <direct-declarator>  {<identifier>} 
 
 <constant-expression> ::= <conditional-expression>
 
-<conditional-expression> ::= <logical-or-expression>
-                           | <logical-or-expression> ? <expression> : <conditional-expression>
 
-<logical-or-expression> ::= <logical-and-expression>
-                          | <logical-or-expression> | <logical-and-expression>
 
-<logical-and-expression> ::= <inclusive-or-expression>
-                           | <logical-and-expression> & <inclusive-or-expression>
 
-<inclusive-or-expression> ::= <exclusive-or-expression>
-                            | <inclusive-or-expression> | <exclusive-or-expression>
 
-<equality-expression> ::= <relational-expression>
-                        | <equality-expression> == <relational-expression>
-                        | <equality-expression> != <relational-expression>
 
-<relational-expression> ::= <shift-expression>
-                          | <relational-expression> < <shift-expression>
-                          | <relational-expression> > <shift-expression>
-                          | <relational-expression> <= <shift-expression>
-                          | <relational-expression> >= <shift-expression>
-
-<additive-expression> ::= <multiplicative-expression>
-                        | <additive-expression> + <multiplicative-expression>
-                        | <additive-expression> - <multiplicative-expression>
-
-<multiplicative-expression> ::= <cast-expression>
-                              | <multiplicative-expression> * <cast-expression>
-                              | <multiplicative-expression> / <cast-expression>
-                              | <multiplicative-expression> % <cast-expression>
 
 <cast-expression> ::= <unary-expression>
                     | ( <type-name> ) <cast-expression>
