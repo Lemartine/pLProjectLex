@@ -7,43 +7,110 @@
 
 <single type import declaration> ::= import <type name> ;
 
-<interface type list> ::= <interface type> | <interface type list> , <interface type>
+<constructor modifier> ::= Int
+  
+<type> ::= <primitive type> | <reference type>
 
+<primitive type> ::= <numeric type> | boolean
 
+<numeric type> ::= <integral type> | <floating-point type>
 
+<integral type> ::=  int | char
 
+<floating-point type> ::= float | double
 
+<reference type> ::= <class or interface type> | <array type>
 
+<class or interface type> ::= <class type> | <interface type>
 
+<class type> ::= <type name>
 
+<interface type> ::= <type name>
 
+<array type> ::= <type> [ ]
+  
+<statement> ::= <statement without trailing substatement> | <labeled statement> | <if then statement> | <if then else statement> | <while statement> | <for statement>
 
+<statement no short if> ::= <statement without trailing substatement> | <labeled statement no short if> | <if then else statement no short if> | <while statement no short if> | <for statement no short if>
 
+<statement without trailing substatement> ::= <block> | <empty statement> | <expression statement> | <switch statement> | <do statement> | <break statement> | <continue statement> | <return statement> | <synchronized statement> | <throws statements> | <try statement>
 
+<empty statement> ::= ;
 
+<labeled statement> ::= <identifier> : <statement>
 
+<labeled statement no short if> ::= <identifier> : <statement no short if>
 
+<expression statement> ::= <statement expression> ;
 
+<statement expression> ::= <assignment> | <preincrement expression> | <postincrement expression> | <predecrement expression> | <postdecrement expression> | <method invocation> | <class instance creation expression>
 
+<if then statement>::= if ( <expression> ) <statement>
 
+<if then else statement>::= if ( <expression> ) <statement no short if> else <statement>
 
+<if then else statement no short if> ::= if ( <expression> ) <statement no short if> else <statement no short if>
 
-<translation-unit> ::= {<external-declaration>}*
+<switch statement> ::= switch ( <expression> ) <switch block>
 
-<external-declaration> ::= <function-definition>
-                         | <declaration>
+<switch block> ::= { <switch block statement groups>? <switch labels>? }
 
-<function-definition> ::= {<declaration-specifier>}* <declarator> {<declaration>}* <compound-statement>
+<switch block statement groups> ::= <switch block statement group> | <switch block statement groups> <switch block statement group>
 
-<declaration-specifier> ::= <storage-class-specifier>
-                          | <type-specifier>
-                          | <type-qualifier>
+<switch block statement group> ::= <switch labels> <block statements>
 
-<type-specifier> ::= void
-                   | char
-                   | int
-                   | float
-                   | double
+<switch labels> ::= <switch label> | <switch labels> <switch label>
+
+<switch label> ::= case <constant expression> : | default :
+
+<while statement> ::= while ( <expression> ) <statement>
+
+<while statement no short if> ::= while ( <expression> ) <statement no short if>
+  
+<break statement> ::= break <identifier>? ;
+
+<continue statement> ::= continue <identifier>? ;
+
+<return statement> ::= return <expression>? ;
+
+<throws statement> ::= throw <expression> ;
+  
+<try statement> ::= try <block> <catches> | try <block> <catches>? <finally>
+
+<catches> ::= <catch clause> | <catches> <catch clause>
+
+<catch clause> ::= catch ( <formal parameter> ) <block>
+  
+<constant expression> ::= <expression>
+<expression> ::= <assignment expression>
+
+<assignment expression> ::= <conditional expression> | <assignment>
+
+<assignment> ::= <left hand side> <assignment operator> <assignment expression>
+
+<left hand side> ::= <expression name> | <field access> | <array access>
+
+<assignment operator> ::= = | *= | /= | %= | += | -= | <<= | >>= | >>>= | &= | ^= | |=
+
+<conditional expression> ::= <conditional or expression> | <conditional or expression> ? <expression> : <conditional expression>
+
+<conditional or expression> ::= <conditional and expression> | <conditional or expression> || <conditional and expression>
+
+<conditional and expression> ::= <inclusive or expression> | <conditional and expression> && <inclusive or expression>
+  
+<relational expression> ::= <shift expression> | <relational expression> < <shift expression> | <relational expression> > <shift expression> | <relational expression> <= <shift expression> | <relational expression> >= <shift expression> | <relational expression> instanceof <reference type>
+  
+<additive expression> ::= <multiplicative expression> | <additive expression> + <multiplicative expression> | <additive expression> - <multiplicative expression>
+  
+<cast expression> ::= ( <primitive type> ) <unary expression> | ( <reference type> ) <unary expression not plus minus>
+
+<unary expression> ::= <preincrement expression> | <predecrement expression> | + <unary expression> | - <unary expression> | <unary expression not plus minus>
+
+<predecrement expression> ::= -- <unary expression>
+
+<preincrement expression> ::= ++ <unary expression>
+  
+
 
 <struct-or-union-specifier> ::= <struct-or-union> <identifier> { {<struct-declaration>}+ }
                               | <struct-or-union> { {<struct-declaration>}+ }
@@ -205,3 +272,75 @@
 <br><b>Explains the syntax of your language:</b>
 
 <br><b>Explains any design decisions you make:</b>
+
+
+
+TOKEN
+
+
+
+<type name> ::= <identifier>
+
+<expression name> ::= <identifier> | <ambiguous name> . <identifier>
+
+<method name> ::= <identifier> | <ambiguous name>. <identifier>
+
+<ambiguous name>::= <identifier> | <ambiguous name>. <identifier>
+
+<literal> ::= <integer literal> | <floating-point literal> | <boolean literal> | <character literal> | <string literal> | <null literal>
+
+<integer literal> ::= <decimal integer literal> | <hex integer literal> | <octal integer literal>
+
+<decimal integer literal> ::= <decimal numeral> <integer type suffix>?
+
+<hex integer literal> ::= <hex numeral> <integer type suffix>?
+
+<octal integer literal> ::= <octal numeral> <integer type suffix>?
+
+<integer type suffix> ::= l | L
+
+<decimal numeral> ::= 0 | <non zero digit> <digits>?
+
+<digits> ::= <digit> | <digits> <digit>
+
+<digit> ::= 0 | <non zero digit>
+
+<non zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+<hex numeral> ::= 0 x <hex digit> | 0 X <hex digit> | <hex numeral> <hex digit>
+
+<hex digit> :: = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | a | b | c | d | e | f | A | B | C | D | E | F
+
+<octal numeral> ::= 0 <octal digit> | <octal numeral> <octal digit>
+
+<octal digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+
+<floating-point literal> ::= <digits> . <digits>? <exponent part>? <float type suffix>?
+
+<digits> <exponent part>? <float type suffix>?
+
+<exponent part> ::= <exponent indicator> <signed integer>
+
+<exponent indicator> ::= e | E
+
+<signed integer> ::= <sign>? <digits>
+
+<sign> ::= + | -
+
+<float type suffix> ::= f | F | d | D
+
+<boolean literal> ::= true | false
+
+<character literal> ::= ' <single character> ' | ' <escape sequence> '
+
+<single character> ::= <input character> except ' and \
+
+<string literal> ::= " <string characters>?"
+
+<string characters> ::= <string character> | <string characters> <string character>
+
+<string character> ::= <input character> except " and \ | <escape character>
+
+<null literal> ::= null
+
+<keyword> ::= abstract | boolean | break | byte | case | catch | char | class | const | continue | default | do | double | else | extends | final | finally | float | for | goto | if | implements | import | instanceof | int | interface | long | native | new | package | private | protected | public | return | short | static | super | switch | synchronized | this | throw | throws | transient | try | void | volatile | while
