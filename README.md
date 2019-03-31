@@ -75,99 +75,9 @@
                       | <direct-declarator> ( <parameter-type-list> )
                       | <direct-declarator>  {<identifier>} 
 
-<constant-expression> ::= <conditional-expression>
-
-
-
-
-
-
-
-<cast-expression> ::= <unary-expression>
-                    | ( <type-name> ) <cast-expression>
-
-<unary-expression> ::= <postfix-expression>
-                     | ++ <unary-expression>
-                     | -- <unary-expression>
-
-<postfix-expression> ::= <primary-expression>
-                       | <postfix-expression> [ <expression> ]
-                       | <postfix-expression> ( {<assignment-expression>}* )
-                       | <postfix-expression> . <identifier>
-                       | <postfix-expression> ++
-                       | <postfix-expression> --
-
-<primary-expression> ::= <identifier>
-                       | <constant>
-                       | <string>
-                       | ( <expression> )
-
-<constant> ::= <integer-constant>
-             | <character-constant>
-             | <floating-constant>
-
-<expression> ::= <assignment-expression>
-               | <expression> , <assignment-expression>
-
-<assignment-operator> ::= =
-                        | *=
-                        | /=
-                        | %=
-                        | +=
-                        | -=
-                        | &=
-                        | |=
-
-<unary-operator> ::= *
-                   | +
-                   | -
-                   | !
-
-<type-name> ::= {<specifier-qualifier>}+ {<abstract-declarator>}?
-
-<parameter-list> ::= <parameter-declaration>
-                   | <parameter-list> , <parameter-declaration>
-
-<parameter-declaration> ::= {<declaration-specifier>}+ <declarator>
-                          | {<declaration-specifier>}+ <abstract-declarator>
-                          | {<declaration-specifier>}+
-
-<abstract-declarator> ::= <pointer>
-                        | <pointer> <direct-abstract-declarator>
-                        | <direct-abstract-declarator>
-
-<direct-abstract-declarator> ::=  ( <abstract-declarator> )
-                               | {<direct-abstract-declarator>}? [ {<constant-expression>}? ]
-                               | {<direct-abstract-declarator>}? ( {<parameter-type-list>}? )>
-
-<typedef-name> ::= <identifier>
-
-<declaration> ::=  {<declaration-specifier>}+ {<init-declarator>}* ;
-
-<init-declarator> ::= <declarator>
-                    | <declarator> = <initializer>
-
-<initializer> ::= <assignment-expression>
-                | { <initializer-list> }
-                | { <initializer-list> , }
-
-<initializer-list> ::= <initializer>
-                     | <initializer-list> , <initializer>
-
-<compound-statement> ::= { {<declaration>}* {<statement>}* }
-
-<statement> ::= <labeled-statement>
-              | <expression-statement>
-              | <compound-statement>
-              | <selection-statement>
-              | <iteration-statement>
-              | <jump-statement>
-
 <labeled-statement> ::= <identifier> : <statement>
                       | case <constant-expression> : <statement>
                       | default : <statement>
-
-<expression-statement> ::= {<expression>}? ;
 
 <selection-statement> ::= if ( <expression> ) <statement>
                         | if ( <expression> ) <statement> else <statement>
@@ -177,68 +87,8 @@
 
 <jump-statement> ::= continue ;
                    | break ;
-                   | return {<expression>}? ;
+                   | return (<expression>) ;
   
-<br><b>Explains the syntax of your language:</b>
-
-<br><b>Explains any design decisions you make:</b>
-
-
-
-TOKEN
-
-
-
-<type name> ::= <identifier>
-
-<expression name> ::= <identifier> | <ambiguous name> . <identifier>
-
-<method name> ::= <identifier> | <ambiguous name>. <identifier>
-
-<ambiguous name>::= <identifier> | <ambiguous name>. <identifier>
-
-<literal> ::= <integer literal> | <floating-point literal> | <boolean literal> | <character literal> | <string literal> | <null literal>
-
-<integer literal> ::= <decimal integer literal> | <hex integer literal> | <octal integer literal>
-
-<decimal integer literal> ::= <decimal numeral> <integer type suffix>?
-
-<hex integer literal> ::= <hex numeral> <integer type suffix>?
-
-<octal integer literal> ::= <octal numeral> <integer type suffix>?
-
-<integer type suffix> ::= l | L
-
-<decimal numeral> ::= 0 | <non zero digit> <digits>?
-
-<digits> ::= <digit> | <digits> <digit>
-
-<digit> ::= 0 | <non zero digit>
-
-<non zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-<hex numeral> ::= 0 x <hex digit> | 0 X <hex digit> | <hex numeral> <hex digit>
-
-<hex digit> :: = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | a | b | c | d | e | f | A | B | C | D | E | F
-
-<octal numeral> ::= 0 <octal digit> | <octal numeral> <octal digit>
-
-<octal digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
-
-<floating-point literal> ::= <digits> . <digits>? <exponent part>? <float type suffix>?
-
-<digits> <exponent part>? <float type suffix>?
-
-<exponent part> ::= <exponent indicator> <signed integer>
-
-<exponent indicator> ::= e | E
-
-<signed integer> ::= <sign>? <digits>
-
-<sign> ::= + | -
-
-<float type suffix> ::= f | F | d | D
-
 <boolean literal> ::= true | false
 
 <character literal> ::= ' <single character> ' | ' <escape sequence> '
@@ -254,3 +104,7 @@ TOKEN
 <null literal> ::= null
 
 <keyword> ::= abstract | boolean | break | byte | case | catch | char | class | const | continue | default | do | double | else | extends | final | finally | float | for | goto | if | implements | import | instanceof | int | interface | long | native | new | package | private | protected | public | return | short | static | super | switch | synchronized | this | throw | throws | transient | try | void | volatile | while
+
+<br><b>Explains the syntax of your language:</b>
+
+<br><b>Explains any design decisions you make:</b>
