@@ -111,4 +111,6 @@ In our language you have to finish the sentence with <b>":"</b>.
 
 In our language when you want to print something you can actually write just <b>print('');</b>
 
-<br><b>Explains any design decisions you make:</b>
+<br><b>Explains any design decisions you make:</b> <br>
+A basic object model that was fairly obvious to anybody who tried to use structs as pseudo-objects<br>
+A standard template library which is really quite good
