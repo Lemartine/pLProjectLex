@@ -101,4 +101,14 @@
 
 <br><b>Explains the syntax of your language:</b>
 
+In the language we created, you can take the packages, saying import packagename for example 
+<b>import Math:</b>
+<b>import Scanner:</b>
+
+In our language main function will start <b>Int main(){}</b> 
+
+In our language you have to finish the sentence with <b>":"</b>.
+
+In our language when you want to print something you can actually write just <b>print('');</b>
+
 <br><b>Explains any design decisions you make:</b>
