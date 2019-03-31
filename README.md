@@ -8,32 +8,16 @@
 <single type import declaration> ::= import <type name> ;
 
 <constructor modifier> ::= Int
-  
-<type> ::= <primitive type> | <reference type>
 
 <primitive type> ::= <numeric type> | boolean
-
-<numeric type> ::= <integral type> | <floating-point type>
 
 <integral type> ::=  int | char
 
 <floating-point type> ::= float | double
-
-<reference type> ::= <class or interface type> | <array type>
-
-<class or interface type> ::= <class type> | <interface type>
-
-<class type> ::= <type name>
-
-<interface type> ::= <type name>
+  
+<string type> ::= string
 
 <array type> ::= <type> [ ]
-  
-<statement> ::= <statement without trailing substatement> | <labeled statement> | <if then statement> | <if then else statement> | <while statement> | <for statement>
-
-<statement no short if> ::= <statement without trailing substatement> | <labeled statement no short if> | <if then else statement no short if> | <while statement no short if> | <for statement no short if>
-
-<statement without trailing substatement> ::= <block> | <empty statement> | <expression statement> | <switch statement> | <do statement> | <break statement> | <continue statement> | <return statement> | <synchronized statement> | <throws statements> | <try statement>
 
 <empty statement> ::= ;
 
