@@ -5,7 +5,7 @@
 
 <b>Grammar in BNF form:</b><br>
 
-<single type import declaration> ::= import <type name> ;
+<single type import declaration> ::= import <type name> :
 
 <constructor modifier> ::= Int
 
@@ -19,70 +19,41 @@
 
 <array type> ::= <type> [ ]
 
-<empty statement> ::= ;
+<empty statement> ::= :
 
-<labeled statement> ::= <identifier> : <statement>
+<labeled statement> ::= <identifier> ; <statement>
 
-<labeled statement no short if> ::= <identifier> : <statement no short if>
-
-<expression statement> ::= <statement expression> ;
-
-<statement expression> ::= <assignment> | <preincrement expression> | <postincrement expression> | <predecrement expression> | <postdecrement expression> | <method invocation> | <class instance creation expression>
+<expression statement> ::= <statement expression> :
 
 <if then statement>::= if ( <expression> ) <statement>
 
 <if then else statement>::= if ( <expression> ) <statement no short if> else <statement>
 
-<if then else statement no short if> ::= if ( <expression> ) <statement no short if> else <statement no short if>
-
 <switch statement> ::= switch ( <expression> ) <switch block>
-
-<switch block> ::= { <switch block statement groups>? <switch labels>? }
-
-<switch block statement groups> ::= <switch block statement group> | <switch block statement groups> <switch block statement group>
-
-<switch block statement group> ::= <switch labels> <block statements>
-
-<switch labels> ::= <switch label> | <switch labels> <switch label>
 
 <switch label> ::= case <constant expression> : | default :
 
 <while statement> ::= while ( <expression> ) <statement>
-
-<while statement no short if> ::= while ( <expression> ) <statement no short if>
   
-<break statement> ::= break <identifier>? ;
+<break statement> ::= break <identifier> :
 
-<continue statement> ::= continue <identifier>? ;
+<continue statement> ::= continue <identifier>? :
 
-<return statement> ::= return <expression>? ;
+<return statement> ::= return <expression>? :
 
-<throws statement> ::= throw <expression> ;
+<throws statement> ::= throw <expression> :
   
 <try statement> ::= try <block> <catches> | try <block> <catches>? <finally>
 
-<catches> ::= <catch clause> | <catches> <catch clause>
-
 <catch clause> ::= catch ( <formal parameter> ) <block>
+
+<assignment operator> ::= = | *= | /= | %= | += | -=
+
+<conditional or expression> ::= <conditional and expression> | <conditional or expression> | <conditional and expression>
+
+<conditional and expression> ::= <inclusive or expression> | <conditional and expression> & <inclusive or expression>
   
-<constant expression> ::= <expression>
-<expression> ::= <assignment expression>
-
-<assignment expression> ::= <conditional expression> | <assignment>
-
-<assignment> ::= <left hand side> <assignment operator> <assignment expression>
-
-<left hand side> ::= <expression name> | <field access> | <array access>
-
-<assignment operator> ::= = | *= | /= | %= | += | -= | <<= | >>= | >>>= | &= | ^= | |=
-
-<conditional expression> ::= <conditional or expression> | <conditional or expression> ? <expression> : <conditional expression>
-
-<conditional or expression> ::= <conditional and expression> | <conditional or expression> || <conditional and expression>
-
-<conditional and expression> ::= <inclusive or expression> | <conditional and expression> && <inclusive or expression>
-  
-<relational expression> ::= <shift expression> | <relational expression> < <shift expression> | <relational expression> > <shift expression> | <relational expression> <= <shift expression> | <relational expression> >= <shift expression> | <relational expression> instanceof <reference type>
+<relational expression> ::= <shift expression> | <relational expression> < <shift expression> | <relational expression> > <shift expression> | <relational expression> <= <shift expression> | <relational expression> >= <shift expression>
   
 <additive expression> ::= <multiplicative expression> | <additive expression> + <multiplicative expression> | <additive expression> - <multiplicative expression>
   
