@@ -15,29 +15,15 @@
                           | <type-specifier>
                           | <type-qualifier>
 
-<storage-class-specifier> ::= auto
-                            | register
-                            | static
-                            | extern
-                            | typedef
-
 <type-specifier> ::= void
                    | char
                    | int
-                   | long
                    | float
                    | double
-                   | signed
-                   | <struct-or-union-specifier>
-                   | <enum-specifier>
-                   | <typedef-name>
 
 <struct-or-union-specifier> ::= <struct-or-union> <identifier> { {<struct-declaration>}+ }
                               | <struct-or-union> { {<struct-declaration>}+ }
                               | <struct-or-union> <identifier>
-
-<struct-or-union> ::= struct
-                    | union
 
 <struct-declaration> ::= {<specifier-qualifier>}* <struct-declarator-list>
 
@@ -56,7 +42,6 @@
 <pointer> ::= * {<type-qualifier>}* {<pointer>}?
 
 <type-qualifier> ::= const
-                   | volatile
 
 <direct-declarator> ::= <identifier>
                       | ( <declarator> )
@@ -70,19 +55,13 @@
                            | <logical-or-expression> ? <expression> : <conditional-expression>
 
 <logical-or-expression> ::= <logical-and-expression>
-                          | <logical-or-expression> || <logical-and-expression>
+                          | <logical-or-expression> | <logical-and-expression>
 
 <logical-and-expression> ::= <inclusive-or-expression>
-                           | <logical-and-expression> && <inclusive-or-expression>
+                           | <logical-and-expression> & <inclusive-or-expression>
 
 <inclusive-or-expression> ::= <exclusive-or-expression>
                             | <inclusive-or-expression> | <exclusive-or-expression>
-
-<exclusive-or-expression> ::= <and-expression>
-                            | <exclusive-or-expression> ^ <and-expression>
-
-<and-expression> ::= <equality-expression>
-                   | <and-expression> & <equality-expression>
 
 <equality-expression> ::= <relational-expression>
                         | <equality-expression> == <relational-expression>
@@ -93,10 +72,6 @@
                           | <relational-expression> > <shift-expression>
                           | <relational-expression> <= <shift-expression>
                           | <relational-expression> >= <shift-expression>
-
-<shift-expression> ::= <additive-expression>
-                     | <shift-expression> << <additive-expression>
-                     | <shift-expression> >> <additive-expression>
 
 <additive-expression> ::= <multiplicative-expression>
                         | <additive-expression> + <multiplicative-expression>
@@ -113,15 +88,11 @@
 <unary-expression> ::= <postfix-expression>
                      | ++ <unary-expression>
                      | -- <unary-expression>
-                     | <unary-operator> <cast-expression>
-                     | sizeof <unary-expression>
-                     | sizeof <type-name>
 
 <postfix-expression> ::= <primary-expression>
                        | <postfix-expression> [ <expression> ]
                        | <postfix-expression> ( {<assignment-expression>}* )
                        | <postfix-expression> . <identifier>
-                       | <postfix-expression> -> <identifier>
                        | <postfix-expression> ++
                        | <postfix-expression> --
 
@@ -133,13 +104,9 @@
 <constant> ::= <integer-constant>
              | <character-constant>
              | <floating-constant>
-             | <enumeration-constant>
 
 <expression> ::= <assignment-expression>
                | <expression> , <assignment-expression>
-
-<assignment-expression> ::= <conditional-expression>
-                          | <unary-expression> <assignment-operator> <assignment-expression>
 
 <assignment-operator> ::= =
                         | *=
@@ -150,16 +117,12 @@
                         | &=
                         | |=
 
-<unary-operator> ::= &
-                   | *
+<unary-operator> ::= *
                    | +
                    | -
                    | !
 
 <type-name> ::= {<specifier-qualifier>}+ {<abstract-declarator>}?
-
-<parameter-type-list> ::= <parameter-list>
-                        | <parameter-list> , ...
 
 <parameter-list> ::= <parameter-declaration>
                    | <parameter-list> , <parameter-declaration>
@@ -174,17 +137,7 @@
 
 <direct-abstract-declarator> ::=  ( <abstract-declarator> )
                                | {<direct-abstract-declarator>}? [ {<constant-expression>}? ]
-                               | {<direct-abstract-declarator>}? ( {<parameter-type-list>}? )
-
-<enum-specifier> ::= enum <identifier> { <enumerator-list> }
-                   | enum { <enumerator-list> }
-                   | enum <identifier>
-
-<enumerator-list> ::= <enumerator>
-                    | <enumerator-list> , <enumerator>
-
-<enumerator> ::= <identifier>
-               | <identifier> = <constant-expression>
+                               | {<direct-abstract-declarator>}? ( {<parameter-type-list>}? )>
 
 <typedef-name> ::= <identifier>
 
