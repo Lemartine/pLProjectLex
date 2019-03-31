@@ -23,13 +23,11 @@
 
 <type-specifier> ::= void
                    | char
-                   | short
                    | int
                    | long
                    | float
                    | double
                    | signed
-                   | unsigned
                    | <struct-or-union-specifier>
                    | <enum-specifier>
                    | <typedef-name>
@@ -149,17 +147,13 @@
                         | %=
                         | +=
                         | -=
-                        | <<=
-                        | >>=
                         | &=
-                        | ^=
                         | |=
 
 <unary-operator> ::= &
                    | *
                    | +
                    | -
-                   | ~
                    | !
 
 <type-name> ::= {<specifier-qualifier>}+ {<abstract-declarator>}?
