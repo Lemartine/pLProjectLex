@@ -53,4 +53,4 @@ Explains any design decisions you make:
 A basic object model that was fairly obvious to anybody who tried to use structs as pseudo-objects<br>
 A standard template library which is really quite good
 
-We get a few errors in the compilation section. We didn't find it on the internet. Please share the solution of our error..
+We get a few errors in the compilation section. We didn't find it on the internet. Please give feedback the solution of our error..
