@@ -1,103 +1,97 @@
 %{
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "y.tab.h"
 %}
 
 %%
-import			{printf("IMPORT ");}
-Int			{printf("BEGIN ");}	
-main			{printf("MAIN ");}
+begin                   {return BEGIN;}
+import                  {return IMPORT;}
+main                    {return MAIN;}
+new                     {return NEW;}
 
-Math			{printf("MATHLIBRARY ");}
-Math.abs		{printf("MATHLIBRARY ");}
-Math.min		{printf("MATHLIBRARY ");}
-Math.max		{printf("MATHLIBRARY ");}
-Math.pow		{printf("MATHLIBRARY ");}
-Math.sqrt		{printf("MATHLIBRARY ");}
-Math.random		{printf("MATHLIBRARY ");}
+Math                    {return MATHLIBRARY;}
+Math.abs                {return MATHLIBRARY;}
+Math.min                {return MATHLIBRARY;}
+Math.max                {return MATHLIBRARY;}
+Math.pow                {return MATHLIBRARY;}
+Math.sqrt               {return MATHLIBRARY;}
+Math.random             {return MATHLIBRARY;}
 
-Scanner			{printf("SCANNERLIBRARY ");}
-in			{printf("SCANNERLIBRARY ");}
-nextInt			{printf("SCANNERLIBRARY ");}
- 
-int                     {printf("INTEGER ");}
-string                  {printf("STRING ");}
-double			{printf("DOUBLE ");}
-boolean			{printf("BOOLEAN ");}
-float			{printf("FLOAT ");}
-char                    {printf("CHARACTER ");}
-NULL                    {printf("NULL ");}
-const                   {printf("CONSTANT ");}
+Scanner                 {return SCANNERLIBRARY;}
+in                      {return SCANNERLIBRARY;}
+nextInt                 {return SCANNERLIBRARY;}
+
+int                     {return INTEGER;}
+str                     {return STRING;}
+double                  {return DOUBLE;}
+boolean                 {return BOOLEAN;}
+float                   {return FLOAT;}
+char                    {return CHARACTER;}
+NULL                    {return NULL;}
+const                   {return CONSTANT;}
 true |
-false                   {printf("BOOLEAN ");}
+false                   {return BOOL;}
 
-if                      {printf("IF ");}
-else                    {printf("ELSE ");}
-elseif                  {printf("ELSEIF ");}
-then                    {printf("THEN ");}
-while                   {printf("WHILE ");}
-switch			{printf("SWITCH ");}
-case			{printf("CASE ");}
-default			{printf("DEFAULT ");}
-break			{printf("BREAK ");}
-continue		{printf("CONTINUE ");}
-try			{printf("TRY");}
-catch			{printf("CATCH");}
+if                      {return IF;}
+else                    {return ELSE;}
+while                   {return WHILE;}
 
-print                   {printf("PRINT ");}
-println                 {printf("PRINT ");}
-printf                  {printf("PRINT ");}
+print			{return PRINT;}
+printf			{return PRINTF;}
+println			{return PRINTLN;}
+return          {return RETURN;}
 
-\&                      {printf("AND ");}
-\|			{printf("OR ");}
+switch                  {return SWITCH;}
+case                    {return CASE;}
+default                 {return DEFAULT;}
+break                   {return BREAK;}
+continue                {return CONTINUE;}
+try                     {return TRY;}
+catch                   {return CATCH;}
+throw                   {return THROW;}
+excep                   {return EXCEPTION;}
 
-\(                      {printf("LEFTPARENT ");}
-\)                      {printf("RIGHTPARENT ");}
-\{                      {printf("OBRACE ");}
-\}                      {printf("EBRACE ");} 
-\'                      {printf("QUOTE ");}  
-\:                      {printf("ASSIGN ");}                                               
-\;                      {printf("SEMICOLON ");}                
-\,                      {printf("COMMA ");}
-\?                      {printf("COMMENT ");}
-\\                      {printf("ESCAPE ");}
-\.			{printf("DOT ");}
+\&                      {return AND;}
+\|                      {return OR;}
 
-\+                      {printf("ADD ");}
-\-                      {printf("SUBSTRACT ");}
-\*                      {printf("MULTIPLICATION ");}
-\/                      {printf("DIVISION ");}
-\%                      {printf("MODULUS ");}
+\(                      {return LEFTPARENT;}
+\)                      {return RIGHTPARENT;}
+\{                      {return OBRACE;}
+\}                      {return EBRACE;}
+\'                      {return QUOTE;}
+\:                      {return EOL;}
+\;                      {return SEMICOLON;}
+\,                      {return COMMA;}
+\?                      {return COMMENT;}
+\\                      {return ESCAPE;}
+\.                      {return DOT;}
+ 
+\+                      {return ADD;}
+\-                      {return SUBSTRACT;}
+\*                      {return MULTIPLICATION;}
+\/                      {return DIVISION;}
+\%                      {return MODULUS;}
 
-\=                      {printf("EQUALS ");}
-\==                     {printf("ISEQUAL ");}
-\!=                     {printf("NEQUALS ");}
-\<                      {printf("LESSTHAN ");}
-\>                      {printf("GREATERTHAN ");}
-\=>                     {printf("GTHANEQUALS ");}
-\<=                     {printf("LTHANEQUALS ");}
-\<=>                    {printf("DOUBLEIMP ");}
+\=                      {return EQUALS;}
+\==                     {return ISEQUAL;}
+\!=                     {return NEQUALS;}
+\<                      {return LESSTHAN;}
+\>                      {return GREATERTHAN;}
+\=>                     {return GTHANEQUALS;}
+\<=                     {return LTHANEQUALS;}
+\<=>                    {return DOUBLEIMP;}
 
-\++                     {printf("INCREMENT ");}
-\--                     {printf("DECREMENT ");}
-\+=                     {printf("ADDEQUAL ");}
-\-=                     {printf("SUBEQUAL ");}
-\*=                     {printf("MULTIPLYEQUAL ");}
-\/=                     {printf("DIVIDEEQUAL ");}
+\++                     {return INCREMENT;}
+\--                     {return DECREMENT;}
+\+=                     {return ADDEQUAL;}
+\-=                     {return SUBEQUAL;}
+\*=                     {return MULTIPLYEQUAL;}
+\/=                     {return DIVIDEEQUAL;}
+" "							{return SPACE;}
 
-[a-zA-Z][a-zA-Z0-9]*    {printf("WORD ");}
-[0-9]*                  {printf("NUMBER ");}
+[a-zA-Z][a-zA-Z0-9]*    {return WORD;}
+[0-9]*\.[0-9]{0,8}         {return DOUBLENUM;}
+[0-9]*                  {return NUMBER;}
 [ \t]+
-.                       {printf("UNNOWNCHARACTER ");}
+.                       {return UNNOWNCHARACTER;}
 %%
-
-int main(int argc, char** argv){
-        if(argc > 1){
-                char c;
-                yyin = fopen(argv[1],"r");
-                yylex();
-        }
-        return 0;
-}
-
